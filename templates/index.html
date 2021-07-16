@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>Yelp Analysis</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+
+  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+    integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+    crossorigin="">
+    </script>
+  
+
+<!--D3 cdn-->
+<script src="https://d3js.org/d3.v5.min.js"></script>
+
+<!--test-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+crossorigin="anonymous"></script>
+<!---->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+crossorigin="" />
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.2/css/bootstrap-slider.min.css">
+<script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.2/bootstrap-slider.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<!--background-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+<!-- Our CSS -->
+<link rel="stylesheet" type="text/css" href="static/css/style.css">
+
+
+</head>
+
+<body>
+
+    
+        <div class="row">
+            <div class="col-md-2">    
+                <div class="thumbnail">
+                    <img src="/static/Images/Yelp-Logo.png" class="img-circle" alt="logo">
+                    
+                </div>
+            </div>
+             <div class="col-md-10">      
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Search By
+                    </div>
+                    <div class="panel-body">
+                      <form>
+                        <div class="form-group" method="post" action="/findBySelect">
+                          <ul class="list-group" id="filters">
+                            <li class="filter list-group-item">
+
+                                <label for="state">State</label>
+                                <select id="selectstate"></select>
+
+                                <label for="city">City</label>
+                              <select id="selectcity"></select>
+
+                              <label for="category">Category</label>
+                              <select id="selectcategory"></select>
+                              
+                              <label for="sub_category">Sub Category</label>
+                              <select  id="selectsubcategory"></select>
+                              
+                              
+                             
+
+                              <button id="fltrBusiness" type="button" class="btn btn-secondary" >Search</button>
+
+                              
+                              
+                            </li>
+                          </ul>
+                        </div>
+                            
+                      </form>
+                      <section>
+                        <aside>
+                          <button id="sentiment_page" type="button" class="btn btn-default pull-right btn-secondary" id="sentiment_page">
+                            <a href="{{ url_for('index_func') }}" id="dataBtn" style="color:whitesmoke;" >
+                              Sentiment test
+                            </a>
+                          </button>
+                        
+                          </aside>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class ='row'>
+            <div class='col-md-4'>
+                <div id ="container1">
+                
+                </div>
+            </div>
+            <div class='col-md-4'>
+                <div id ="container2">
+                
+                </div>
+            </div>
+            <div class='col-md-4'>
+                <div id ="polarity">
+                
+                </div>
+            </div>
+        </div>
+         <hr>      
+
+        <div class="row" id="mapRow" style="height: 70%; width: 60%; margin: auto; "  class='col-md-12' >
+            <div id='map'>
+            </div>
+            <!-- Map -->
+        </div>
+        <div class="row" id= "businesslist">
+            
+            
+            <div class="container">
+                <button id="highRatedBusiness" type="button" class="btn btn-default pull-right btn-secondary" onclick="highestRated()">Highest rated</button>
+                
+                <button id="lowRatedBusiness" type="button" class="btn btn-default pull-right btn-secondary" onclick="lowestRated()">Lowest rated</button>
+                                
+                Business List
+                <div id='accordion'></div>
+            </div>
+            
+
+            
+        </div>
+        <hr>
+
+
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.3/d3.min.js"></script>
+
+    <!-- Queue JS -->
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/queue.v1.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.5/gsap.min.js"></script>
+
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+    <!-- API key -->
+    <script type="text/javascript" src="/static/js/config.js"></script>
+
+    <!-- Our JS -->
+    <script type="text/javascript" src="/static/js/queue.js"></script>
+    <script type="text/javascript" src="/static/js/business.js"></script>
+    <script type="text/javascript" src="/static/js/readInput.js"></script>
+    <script type="text/javascript" src="/static/js/intermediate.js"></script>
+    <script type="text/javascript" src="/static/js/CategoriesFilter.js"></script>
+    <script type="text/javascript" src="/static/js/yearly_review.js"></script>
+    <script type="text/javascript" src="/static/js/mapLogic.js"></script>
+    <script type="text/javascript" src="/static/js/wordCloud.js"></script>
+
+</body>
+</html>
+
+<!-- <script>
+    d3.csv("static/data/file.csv",function(data){
+        data1 = data
+        //console.log(data)
+        anychart.onDocumentReady(function () {
+            //console.log("inside anychart")
+            //console.log(data)
+            // code to create a word cloud chart will be here
+            // create a tag (word) cloud chart
+            var chart = anychart.tagCloud(data);
+            // set a chart title
+            chart.title('15 most spoken languages')
+            // set an array of angles at which the words will be laid out
+            chart.angles([0])
+            // enable a color range
+            //chart.colorRange(true);
+            // set the color range length
+            chart.colorRange().length('80%');
+            var background = chart.background();
+            background.stroke("black");
+            background.cornerType("cut");
+            background.corners(5, 5, 5, 5);
+            // display the word cloud chart
+            chart.container("container").draw();
+            //console.log("making container")
+            //chart.draw();
+            //return(chart.draw())
+        });
+});
+</script> -->
